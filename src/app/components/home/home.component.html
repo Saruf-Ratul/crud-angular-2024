@@ -1,0 +1,66 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu-Item">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+    <button mat-icon-button class="mr-4" routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
+    <span>CRUD App</span>
+
+    <!-- logout -->
+    <button mat-icon-button class="mr-4" [matMenuTriggerFor]="logoutMenu">
+      <mat-icon>logout</mat-icon>
+    </button>
+
+    <mat-menu #logoutMenu="matMenu">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-button>Profile</button>
+                <button mat-button (click)="logout()">Logout</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-menu>
+
+
+
+
+
+
+</mat-toolbar>
+
+<!-- Menu-Item -->
+<mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/employee-list">
+    <mat-icon>dialpad</mat-icon>
+    <span>Employee-list</span>
+  </button>
+    <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+    <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>
+
+<!-- Admin Dashboard graph -->
+<mat-card *ngIf="router.url === '/home'">
+    <!-- <div style="height: 20px; width: 500px;"> -->
+    <div id="chartContainer" style="height: 300px; width: 100%;">
+        <div *ngIf="chartOptions">
+            <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
+        </div>
+        <div *ngIf="chartBar">
+            <canvasjs-chart [options]="chartBar"></canvasjs-chart>
+        </div>
+        <!-- </div> -->
+
+    </div>
+
+</mat-card>
